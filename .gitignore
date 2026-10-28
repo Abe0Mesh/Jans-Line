@@ -1,0 +1,10 @@
+# Python & Django
+.venv/
+__pycache__/
+*.py[cod]
+db.sqlite3
+.pytest_cache/
+
+#Environment variables and OS files
+.env
+.DS_Store
