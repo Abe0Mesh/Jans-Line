@@ -1,6 +1,7 @@
 "use client"; // so we can run component on web
 import {useState, useEffect} from "react";
 
+const API_BASE_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:8000";
 
 interface Venue {
   id: number;
@@ -55,17 +56,17 @@ export default function Home() {
 
   // GET bars from backend
   useEffect(() => {
-    fetch("http://localhost:8000/api/venues/")
+    fetch(`${API_BASE_URL}/api/venues/`)
       .then((res) => res.json())
       .then((data) => setVenues(data));
   }, [])
 
   // Lowercase first letter identifer used for normal functions
   async function updateWait(id: number, newWait: number) {
-    const res = await fetch("http://localhost:8000/api/checkins/", {
+    const res = await fetch(`${API_BASE_URL}//api/checkins/`, {
       method: "POST",
       headers: {"Content-Type": "application/json" },
-      body: JSON.stringify({ venue_id: id, wait_mins: newWait }),
+      body: JSON.stringify({ venueId: id, waitMins: newWait }),
     });
 
     const result = await res.json();
