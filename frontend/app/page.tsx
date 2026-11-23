@@ -56,14 +56,14 @@ export default function Home() {
 
   // GET bars from backend
   useEffect(() => {
-    fetch(`${API_BASE_URL}/api/venues/`)
+    fetch(`${API_BASE_URL}/api/venues`)
       .then((res) => res.json())
       .then((data) => setVenues(data));
   }, [])
 
   // Lowercase first letter identifer used for normal functions
   async function updateWait(id: number, newWait: number) {
-    const res = await fetch(`${API_BASE_URL}//api/checkins/`, {
+    const res = await fetch(`${API_BASE_URL}/api/checkins`, {
       method: "POST",
       headers: {"Content-Type": "application/json" },
       body: JSON.stringify({ venueId: id, waitMins: newWait }),
